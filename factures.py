@@ -15,12 +15,12 @@ def getDataDict(df, arr):
     for index, row in df[df.columns].iterrows():
         data_dict.append({row.to_list()[0]: row.to_list()[1:]})
     return data_dict
-print('============================================')
+print('...................................................................................')
 
+fileNum = input('File Number :')
 sheet = input('Sheet Number :')
-lot1 = pd.read_excel('04.xlsx',f'Sheet{sheet}')
-lot1Dict = getDataDict(lot1, ['name', 'qty', 'pu', '%R',
-                       'Prix AR', 'TVA', 'PPA', 'N°Lot', 'SHP', 'Peremp', ''])
+lot1 = pd.read_excel(f'{str(fileNum)}.xlsx',f'Sheet{sheet}')
+lot1Dict = getDataDict(lot1, ['name', 'qty', 'pu', '%R','Prix AR', 'TVA', 'PPA', 'N°Lot', 'SHP', 'Peremp'])
 
 
 def getDrogIdx(index):
@@ -46,12 +46,12 @@ while int(index) < len(lot1Dict):
         astro.hotkey('ctrl', 'v')
 
 
-        if input('Continue.........') == '':
+        if input('Continue...\n') == '':
             astro.moveTo(1654, 39)
             astro.click()
             pyperclip.copy(key[1][6])
             astro.hotkey('ctrl', 'v')
-        if input('Continue.........') == '':
+        if input('Continue...\n') == '':
             astro.moveTo(x=1560, y=97)
             astro.doubleClick()
             time.sleep(0.3)
@@ -62,4 +62,4 @@ while int(index) < len(lot1Dict):
             time.sleep(0.3)
             astro.write(str(key[1][1]))
 
-        print('============================================')
+        print('...................................................................................')
